@@ -6,21 +6,18 @@ import {authService} from "fBase"
 
 function App() {
   const [init, setInit] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false); // 굳이 없어도 된다.
   const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if(user) {
-        // setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
           updateProfile: (args) => user.updateProfile(args),
         });
+      } else {
+        setUserObj(null);
       }
-      //  else {
-      //   setIsLoggedIn(false);
-      // }
       setInit(true)
     })
   }, [])

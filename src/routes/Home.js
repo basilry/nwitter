@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 const Home = ({userObj}) => {
   const [nweet, setNweet] = useState("")
   const [nweets, setNweets] = useState([]);
-  const [attachment, setAttatchment] = useState();
+  const [attachment, setAttatchment] = useState("");
   useEffect(() => {
     // 스냅샷은 기본적으로 데이터베이스에 무슨일 있으면 받는 역할
     dbService.collection("nweets").onSnapshot(snapshot => {
